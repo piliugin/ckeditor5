@@ -31,6 +31,10 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
 
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -58,7 +62,10 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Subscript,
+	Superscript,
+	Highlight,
 ];
 
 // Editor configuration.
@@ -69,19 +76,22 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'bold',
 			'italic',
+			'highlight',
 			'link',
+			'subscript',
+			'superscript',
 			'bulletedList',
 			'numberedList',
 			'|',
-			'outdent',
 			'indent',
+			'outdent',
 			'|',
-			'uploadImage',
+			'imageUpload',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
 		]
 	},
 	image: {
@@ -99,6 +109,12 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
+	highlight: {
+		options: [
+			{ model: 'redPen', class: 'pen-red', title: 'Красный цвет', color: 'var(--ck-highlight-pen-red)', type: 'pen' },
+			{ model: 'greenPen', class: 'pen-green', title: 'Зеленый цвет', color: 'var(--ck-highlight-pen-green)', type: 'pen' },
+		],
+	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'ru'
 };
